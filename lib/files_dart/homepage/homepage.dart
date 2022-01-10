@@ -1,0 +1,520 @@
+import 'package:bango_shop/Catagories/Caps.dart';
+import 'package:bango_shop/Catagories/Electronics.dart';
+import 'package:bango_shop/Catagories/Gadgets.dart';
+import 'package:bango_shop/Catagories/Global.dart';
+import 'package:bango_shop/Catagories/Health.dart';
+import 'package:bango_shop/Catagories/Shirts.dart';
+import 'package:bango_shop/Catagories/T_shirts.dart';
+import 'package:double_back_to_close/double_back_to_close.dart';
+import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:bango_shop/custom_widgets/custom_appbar.dart';
+import 'package:bango_shop/custom_widgets/custom_bottomnavigationbar.dart';
+import 'package:bango_shop/custom_widgets/custom_drawer.dart';
+import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:bango_shop/files_dart/product_details/custom_product_display.dart';
+import 'package:bango_shop/files_dart/homepage/productinformation.dart';
+import 'package:bango_shop/files_dart/product_details/custom_product_details.dart';
+import 'package:bango_shop/files_dart/profile/profiles.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+import 'Product_Listview.dart';
+
+class homepage_app extends StatefulWidget {
+  @override
+  State<homepage_app> createState() => _homepage_appState();
+}
+
+class _homepage_appState extends State<homepage_app> {
+  productinformation product_data = productinformation();
+  bool favorite_icon_color = true;
+  final List<String> sliderimageurl = [
+    "assets/1.png",
+    'assets/2.png',
+    'assets/3.png',
+  ];
+
+  @override
+  void initState() {
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var hei = MediaQuery.of(context).size.height;
+    var wid = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: CustomAppBar(),
+      drawer: custom_drawer(),
+      body: DoubleBack(
+        child: SafeArea(
+          child: ListView(
+            children: [
+              // Header Slider
+              Container(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: hei / 150,
+                      left: wid / 75,
+                      right: wid / 75,
+                      bottom: hei / 150),
+                  child: Container(
+                    height: hei / 6,
+                    child: CarouselSlider.builder(
+                        autoSliderTransitionTime: Duration(seconds: 1),
+                        autoSliderDelay: Duration(seconds: 5),
+                        enableAutoSlider: true,
+                        unlimitedMode: true,
+                        slideTransform: ParallaxTransform(),
+                        slideBuilder: (context) {
+                          return Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(sliderimageurl[context]),
+                                    fit: BoxFit.fill),
+                                color: Color(0xffEDEFF0),
+                                borderRadius:
+                                    BorderRadiusDirectional.circular(13)),
+                            alignment: Alignment.center,
+                          );
+                        },
+                        itemCount: sliderimageurl.length),
+                  ),
+                ),
+              ),
+              // CategoryText
+              Padding(
+                padding: EdgeInsets.only(
+                    top: hei / 150,
+                    left: wid / 75,
+                    right: wid / 75,
+                    bottom: hei / 150),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Catagories",
+                        style: TextStyle(
+                            fontSize: hei / 40, fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          "More",
+                          style: TextStyle(
+                              fontSize: hei / 45,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              // Category button
+              Padding(
+                padding: EdgeInsets.only(
+                    top: hei / 150,
+                    left: wid / 75,
+                    right: wid / 75,
+                    bottom: hei / 150),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffEDEFF0),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  height: hei / 5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Shirt()));
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: hei / 100,
+                                    left: wid / 75,
+                                    right: wid / 75,
+                                    bottom: hei / 150),
+                                child: Container(
+                                  height: hei / 12,
+                                  width: wid / 6,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        "assets/catimg1.png",
+                                        height: hei / 17,
+                                        width: wid / 8,
+                                      ),
+                                      Text(
+                                        "Shirts",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: hei / 55,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_T_shirt()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg2.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Shoes",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Caps()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg3.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "T-shirts",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Gadgets()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg4.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Caps",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Electronics()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg5.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Gadgets",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Electronics()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg6.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Electronic",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Health()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg7.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Healts",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Catagory_Global()));
+                              },
+                              child: Container(
+                                height: hei / 12,
+                                width: wid / 6,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/catimg8.png",
+                                      height: hei / 17,
+                                      width: wid / 8,
+                                    ),
+                                    Text(
+                                      "Global",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: hei / 55,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // top products
+              Padding(
+                padding: EdgeInsets.only(
+                    top: hei / 150,
+                    left: wid / 75,
+                    right: wid / 75,
+                    bottom: hei / 150),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Tranding Product",
+                      style: TextStyle(
+                          fontSize: hei / 38, fontWeight: FontWeight.bold),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Product_ListView()));
+                      },
+                      child: Text(
+                        "More",
+                        style: TextStyle(
+                            fontSize: hei / 45,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.orange),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              // top product list
+              GridView.builder(
+                  shrinkWrap: true,
+                  controller: ScrollController(keepScrollOffset: true),
+                  itemCount: product_data.prouctname.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 0.62, crossAxisCount: 2),
+                  itemBuilder: (Buildercontext, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                          left: wid / 75, right: wid / 75, bottom: hei / 150),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(SwipeablePageRoute(
+                              canOnlySwipeFromEdge: true,
+                              builder: (BuildContext context) =>
+                                  customproduct_details(
+                                      product_data.prouctname[index])));
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          elevation: 20,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: hei / 150,
+                                    left: wid / 75,
+                                    right: wid / 75,
+                                    bottom: hei / 150),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: Color(0xFF3BB73E),
+                                      child: Text(
+                                        product_data
+                                            .prouctname[index].parcentage,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    IconButton(
+                                        icon: Icon(Icons.favorite_border,
+                                            size: hei / 23),
+                                        onPressed: () {})
+                                  ],
+                                ),
+                              ),
+                              Image.network(
+                                product_data.prouctname[index].imgurl,
+                                height: hei / 5.2,
+                                width: wid / 2,
+                                fit: BoxFit.fill,
+                              ),
+                              SizedBox(
+                                height: hei / 140,
+                              ),
+                              Text(product_data.prouctname[index].title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: hei / 45,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                height: hei / 140,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: wid / 30),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: wid / 70,
+                                    ),
+                                    Text(
+                                      "৳" +
+                                          product_data
+                                              .prouctname[index].proprice
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.orange,
+                                          fontSize: hei / 35),
+                                    ),
+                                    SizedBox(
+                                      width: wid / 77,
+                                    ),
+                                    Text(
+                                      "৳" +
+                                          product_data.prouctname[index].price
+                                              .toString(),
+                                      style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          decorationThickness: 2.0,
+                                          fontSize: hei / 50),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: RatingBarIndicator(
+                                      rating:
+                                          product_data.prouctname[index].rating,
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      ),
+                                      itemCount: 5,
+                                      itemSize: 16.0,
+                                      direction: Axis.horizontal,
+                                    ),
+                                  ),
+                                  Text(
+                                      "[${product_data.prouctname[index].proprice}]")
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  })
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
