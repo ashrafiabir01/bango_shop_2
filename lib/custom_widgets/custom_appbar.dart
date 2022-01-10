@@ -1,3 +1,4 @@
+import 'package:bango_shop/search.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -21,7 +22,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
       elevation: 0,
       backgroundColor: Color(0xFF3BB73E),
       title: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>search()));
+        },
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7), color: Colors.white),
