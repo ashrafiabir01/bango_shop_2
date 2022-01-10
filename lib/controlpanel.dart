@@ -21,9 +21,6 @@ class _main_controlpanelState extends State<main_controlpanel> {
     var hei = MediaQuery.of(context).size.height;
     var wid = MediaQuery.of(context).size.width;
 
-
-
-
     return Scaffold(
       drawer: custom_drawer(),
       bottomNavigationBar: BottomNavigationBar(
