@@ -1,4 +1,3 @@
-import 'package:bango_shop/files_dart/aurth_app/passwordreset.dart';
 import 'package:bango_shop/files_dart/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'files_dart/homepage/productinformation.dart';
 
 class search extends StatefulWidget {
-
   @override
   _searchState createState() => _searchState();
 }
 
 class _searchState extends State<search> {
-
-  var row =[];
+  var row = [];
   List result = [];
   String query = '';
 
@@ -18,8 +16,6 @@ class _searchState extends State<search> {
   productinformation product_data = productinformation();
   @override
   void initState() {
-
-
     row = [
       {
         'name': 'product one',
@@ -36,14 +32,10 @@ class _searchState extends State<search> {
         'price': 300,
         'des': 'this is a best product ever '
       },
-      {
-        'name': 'product 4',
-        'price': 400,
-        'des': 'this is a best product ever '
-      }
+      {'name': 'product 4', 'price': 400, 'des': 'this is a best product ever '}
     ];
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +51,10 @@ class _searchState extends State<search> {
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'Search...'
-                ),
-                onChanged: (v){
+                    hintText: 'Search...'),
+                onChanged: (v) {
                   setState(() {
-                    query= v;
+                    query = v;
                     setresult(query);
                   });
                 },
@@ -76,61 +67,61 @@ class _searchState extends State<search> {
         children: [
           Column(
             children: [
-
               Container(
                 child: query.isEmpty
-                    ?
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: row.length,
-                    itemBuilder: (_,i){
-                      return Card(
-                        child: ListTile(
-                          title: Text(row[i]['name']),
-                          onTap: (){
-                            setState(() {
-                              serchTC.text = row[i]['name'];
-                              query = row[i]['name'];
-                              setresult(query);
-                            });
-                          },
-                        ),
-                      );
-                    })
-                    :
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: result.length,
-                    itemBuilder: (_,i){
-                      return Card(
-                        child: ListTile(
-                          title: Text(result[i]['name']),
-                          onTap: (){
-                            setState(() {
-                              serchTC.text = result[i]['name'];
-                              query = result[i]['name'];
-                              setresult(query);
-                            });
-                          },
-                        ),
-                      );
-                    }),
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: row.length,
+                        itemBuilder: (_, i) {
+                          return Card(
+                            child: ListTile(
+                              title: Text(row[i]['name']),
+                              onTap: () {
+                                setState(() {
+                                  serchTC.text = row[i]['name'];
+                                  query = row[i]['name'];
+                                  setresult(query);
+                                });
+                              },
+                            ),
+                          );
+                        })
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: result.length,
+                        itemBuilder: (_, i) {
+                          return Card(
+                            child: ListTile(
+                              title: Text(result[i]['name']),
+                              onTap: () {
+                                setState(() {
+                                  serchTC.text = result[i]['name'];
+                                  query = result[i]['name'];
+                                  setresult(query);
+                                });
+                              },
+                            ),
+                          );
+                        }),
               )
-
             ],
           )
         ],
       ),
     );
-
   }
 
-  void setresult(String query){
-
-    result = row.where((element) =>
-    element['name'].toString().toLowerCase().contains(query.toLowerCase()) ||
-        element['price'].toString().toLowerCase().contains(query.toLowerCase())).toList();
-
-
+  void setresult(String query) {
+    result = row
+        .where((element) =>
+            element['name']
+                .toString()
+                .toLowerCase()
+                .contains(query.toLowerCase()) ||
+            element['price']
+                .toString()
+                .toLowerCase()
+                .contains(query.toLowerCase()))
+        .toList();
   }
 }

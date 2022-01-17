@@ -3,7 +3,7 @@ class productinformation {
   final List<custom_product_display> prouctname = [
     custom_product_display(
         "Men's Strysish Shoes",
-        "https://static-01.daraz.com.bd/p/mdc/cf4fb90c3a1dc00f9fdb259e18e03c2b.jpg",
+        "https://purepng.com/public/uploads/large/purepng.com-shoes-merrellfashion-objects-shoes-men-footwear-running-shoe-foot-sport-brown-trendclothingshoes-merrell-631522936021vkzst.png",
         5,
         1000,
         0.1,
@@ -11,7 +11,7 @@ class productinformation {
         1200),
     custom_product_display(
         "Girl's stylish shirt",
-        "https://static-01.daraz.com.bd/p/8794033bd9e86d911aea6eb81870f56b.jpg",
+        "https://purepng.com/public/uploads/large/purepng.com-red-haired-girlpersonspeopleswomanwomenred-hairedgirlsteens-2515194739356hvnu.png",
         4.6,
         220,
         0.1,
@@ -19,7 +19,7 @@ class productinformation {
         340),
     custom_product_display(
         "M120 Smart band watch",
-        "https://static-01.daraz.com.bd/p/162dff06ce1c57fccecb887f77cc9281.jpg_200x200q80.jpg_.webp",
+        "https://purepng.com/public/uploads/large/apple-watch-pcq.png",
         5,
         1200,
         0.1,
@@ -27,7 +27,7 @@ class productinformation {
         1500),
     custom_product_display(
         "Latest white lighter",
-        "https://ae01.alicdn.com/kf/H3b0b2c09c7ed49dbafc088c60950d2460.jpg?width=1000&height=1000&hash=2000",
+        "https://purepng.com/public/uploads/large/purepng.com-lighter-zippolighterportable-deviceflamecigarettesmetalplasticzippo-142152658007487knb.png",
         5,
         600,
         0.1,
@@ -35,7 +35,7 @@ class productinformation {
         900),
     custom_product_display(
         "I-phone 13 pro max cover",
-        "https://static-01.daraz.com.bd/p/3c79ffa68f7ccd03b3e0eb1fe2a73388.jpg",
+        "https://purepng.com/public/uploads/large/purepng.com-apple-iphone-xappleapple-iphonephonesmartphonemobile-devicetouch-screeniphone-xiphone-10electronicsobjects-251530689596wod8s.png",
         5,
         240,
         0.1,
@@ -51,7 +51,7 @@ class productinformation {
         1500),
     custom_product_display(
         "Latest Mi Headphone x3",
-        "https://atlas-content-cdn.pixelsquid.com/stock-images/playstation-5-headphones-724R2n7-600.jpg",
+        "https://purepng.com/public/uploads/large/purepng.com-music-headphonemusicheadphoneearphoneslisteningearssounds-231519334380hjpfo.png",
         5,
         1990,
         0.1,
